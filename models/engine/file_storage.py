@@ -1,22 +1,19 @@
 #!/usr/bin/python3
 """commenttttttttttttttttttttttttttttttttttt"""
 import uuid
-import datetime
-import sys
 import json
 
 
-class BaseModel:
+class FileStorage:
     """commenttttttttttttttttttttttttttttttttttt"""
-    id = None
-    created_at = None
-    updated_at = None
+    __file_path = None
+    __objects = None
 
-    def __init__(self, *args, **kwargs):
+    def all(self):
         """commenttttttttttttttttttttttttttttttttttt"""
-        pass
+        return self.__objects
 
-    def __str__(self):
+    def new(self, obj):
         """commenttttttttttttttttttttttttttttttttttt"""
         pass
 
@@ -24,6 +21,6 @@ class BaseModel:
         """commenttttttttttttttttttttttttttttttttttt"""
         pass
 
-    def to_dict(self):
+    def reload(self):
         """commenttttttttttttttttttttttttttttttttttt"""
         pass
