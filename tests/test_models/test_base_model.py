@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""This is a test for the base model class"""
+
 from models.base_model import BaseModel
 
 my_model = BaseModel()
