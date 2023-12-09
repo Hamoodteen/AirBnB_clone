@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tok) == 0:
             print("** class name missing **")
             return
-        if tok[0] not in storage.classes:
+        if tok[0] not in storage.classes():
             print("** class doesn't exist **")
             return
         if len(tok) == 1:
@@ -58,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tok) == 0:
             print("** class name missing **")
             return
-        if tok[0] not in storage.classes:
+        if tok[0] not in storage.classes():
             print("** class doesn't exist **")
             return
         if len(tok) == 1:
