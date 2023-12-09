@@ -19,5 +19,6 @@ class HBNBCommand(cmd.Cmd):
         """commenttttttttttttttttttttttttttttttttttt"""
         pass
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
