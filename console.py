@@ -74,11 +74,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """commenttttttttttttttttttttttttttttttttttt"""
-        tok = line.split()
-        if tok[0] is not None and tok[0] not in clss:
-            print("** class doesn't exist **")
-            return
-        print(storage.all())
+        pass
 
     def do_update(self):
         """commenttttttttttttttttttttttttttttttttttt"""
