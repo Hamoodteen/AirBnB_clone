@@ -110,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tok) == 3:
             print("** value missing **")
             return
-        pass
+        storage.all()[mynameid].save()
 
 
 if __name__ == '__main__':
