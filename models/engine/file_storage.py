@@ -3,13 +3,6 @@
 
 import json
 import os
-from models.base_model import BaseModel
-from models.user import User
-from models.place import Place
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
 
 
 class FileStorage:
@@ -17,15 +10,6 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-    classes = {
-        "BaseModel": BaseModel,
-        "User": User,
-        "Place": Place,
-        "State": State,
-        "City": City,
-        "Amenity": Amenity,
-        "Review": Review,
-    }
 
     def all(self):
         """Returns a dictionary of models currently in storage"""
@@ -44,7 +28,23 @@ class FileStorage:
 
     def reload(self):
         """Loads storage dictionary from file to recreate objects"""
-        clss = FileStorage.classes
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.place import Place
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.review import Review
+
+        classes = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "Place": Place,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Review": Review,
+        }
 
         if not os.path.isfile(FileStorage.__file_path):
             return
@@ -52,4 +52,4 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as f:
                 d = json.load(f)
                 for key, val in d.items():
-                    self.all()[key] = clss[val["__class__"]](**val)
+                    self.all()[key] = classes[val["__class__"]](**val)
