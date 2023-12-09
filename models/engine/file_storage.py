@@ -3,13 +3,7 @@
 
 import json
 import os
-from models.base_model import BaseModel
-from models.user import User
-from models.place import Place
-from models.state import State
-from models.city import City
-from models.amenity import Amenity
-from models.review import Review
+
 
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
@@ -32,18 +26,27 @@ class FileStorage:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
 
+    def classes(self):
+        """Returns a dictionary of valid classes and their references"""
+        from models.base_model import BaseModel
+        from models.user import User
+        from models.state import State
+        from models.city import City
+        from models.amenity import Amenity
+        from models.place import Place
+        from models.review import Review
+
+        classes = {"BaseModel": BaseModel,
+                   "User": User,
+                   "State": State,
+                   "City": City,
+                   "Amenity": Amenity,
+                   "Place": Place,
+                   "Review": Review}
+        return classes
+
     def reload(self):
         """Loads storage dictionary from file to recreate objects"""
-
-        classes = {
-            "BaseModel": BaseModel,
-            "User": User,
-            "Place": Place,
-            "State": State,
-            "City": City,
-            "Amenity": Amenity,
-            "Review": Review,
-        }
 
         if not os.path.isfile(FileStorage.__file_path):
             return
@@ -51,5 +54,5 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as f:
                 d = json.load(f)
                 for key, val in d.items():
-                    self.all()[key] = classes[val["__class__"]](**val)
+                    self.all()[key] = self.classes()[val["__class__"]](**val)
                 FileStorage.__objects = d
