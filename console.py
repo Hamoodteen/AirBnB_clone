@@ -88,8 +88,28 @@ class HBNBCommand(cmd.Cmd):
                 ls.append(str(v))
         print(ls)
 
-    def do_update(self):
+    def do_update(self, line):
         """commenttttttttttttttttttttttttttttttttttt"""
+        tok = line.split()
+        if len(tok) == 0:
+            print("** class name missing **")
+            return
+        if tok[0] not in clss:
+            print("** class doesn't exist **")
+            return
+        if len(tok) == 1:
+            print("** instance id missing **")
+            return
+        mynameid = "{}.{}".format(tok[0], tok[1])
+        if mynameid not in storage.all():
+            print("** no instance found **")
+            return
+        if len(tok) == 2:
+            print("** attribute name missing **")
+            return
+        if len(tok) == 3:
+            print("** value missing **")
+            return
         pass
 
 
