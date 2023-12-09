@@ -15,7 +15,13 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """commenttttttttttttttttttttttttttttttttttt"""
     prompt = "(hbnb) "
-    clss = storage.classes()
+    clss = {"BaseModel": BaseModel,
+                   "User": User,
+                   "State": State,
+                   "City": City,
+                   "Amenity": Amenity,
+                   "Place": Place,
+                   "Review": Review}
 
     def do_EOF(self, line):
         """commenttttttttttttttttttttttttttttttttttt"""
