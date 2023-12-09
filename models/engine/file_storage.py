@@ -44,6 +44,7 @@ class FileStorage:
 
     def reload(self):
         """Loads storage dictionary from file to recreate objects"""
+        clss = FileStorage.classes
 
         if not os.path.isfile(FileStorage.__file_path):
             return
@@ -51,4 +52,4 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as f:
                 d = json.load(f)
                 for key, val in d.items():
-                    self.all()[key] = FileStorage.classes[val["__class__"]](**val)
+                    self.all()[key] = clss[val["__class__"]](**val)
