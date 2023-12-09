@@ -9,6 +9,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """commenttttttttttttttttttttttttttttttttttt"""
+        print()
         return True
 
     def do_quit(self, line):
