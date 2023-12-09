@@ -4,11 +4,19 @@ import cmd
 import json
 from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     """commenttttttttttttttttttttttttttttttttttt"""
     prompt = "(hbnb) "
+    clss = storage.classes()
 
     def do_EOF(self, line):
         """commenttttttttttttttttttttttttttttttttttt"""
@@ -25,8 +33,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """commenttttttttttttttttttttttttttttttttttt"""
-        if line in storage.classes:
-            myc = storage.classes[line]()
+        if line in self.clss:
+            myc = self.clss[line]()
             myc.save()
             print(myc.id)
         elif line == "" or line is None:
@@ -40,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tok) == 0:
             print("** class name missing **")
             return
-        if tok[0] not in storage.classes():
+        if tok[0] not in self.clss():
             print("** class doesn't exist **")
             return
         if len(tok) == 1:
@@ -58,7 +66,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tok) == 0:
             print("** class name missing **")
             return
-        if tok[0] not in storage.classes():
+        if tok[0] not in self.clss():
             print("** class doesn't exist **")
             return
         if len(tok) == 1:
