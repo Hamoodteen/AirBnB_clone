@@ -49,7 +49,7 @@ class FileStorage:
         if not os.path.isfile(FileStorage.__file_path):
             return
         d = {}
-        with open(FileStorage.__file_path, "r") as f:
+        with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
             d = json.load(f)
             for key, val in d.items():
                 self.all()[key] = classes[val["__class__"]](**val)
