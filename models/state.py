@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """commenttttttttttttttttttttttttttttttttttt"""
-import base_model
+from models.base_model import BaseModel
 
 
-class State(base_model.BaseModel):
+class State(BaseModel):
     """commenttttttttttttttttttttttttttttttttttt"""
     name = ""
