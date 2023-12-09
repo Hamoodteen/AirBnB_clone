@@ -49,7 +49,6 @@ class FileStorage:
         if not os.path.isfile(FileStorage.__file_path):
             return
         else:
-            d = {}
             with open(FileStorage.__file_path, "r") as f:
                 d = json.load(f)
                 for key, val in d.items():
