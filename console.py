@@ -74,11 +74,19 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """commenttttttttttttttttttttttttttttttttttt"""
-        tok = line.split()
-        if tok and tok[0] not in clss:
-            print("** class doesn't exist **")
-            return
-        print(BaseModel(tok[0]).to_dict())
+        ls = []
+        if line:
+            line = line.split()[0]
+            if line not in clss:
+                print("** class doesn't exist **")
+                return
+            for k, v in storage._FileStorage__objects.items():
+                if k.split('.')[0] == line:
+                    ls.append(str(v))
+        else:
+            for k, v in storage._FileStorage__objects.items():
+                ls.append(str(v))
+        print(ls)
 
     def do_update(self):
         """commenttttttttttttttttttttttttttttttttttt"""
