@@ -53,3 +53,4 @@ class FileStorage:
                 d = json.load(f)
                 for key, val in d.items():
                     self.all()[key] = classes[val["__class__"]](**val)
+                FileStorage.__objects = d
