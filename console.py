@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
         if len(tok) == 0:
             print("** class name missing **")
             return
-        if tok[0] not in clss():
+        if tok[0] not in clss:
             print("** class doesn't exist **")
             return
         if len(tok) == 1:
