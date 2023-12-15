@@ -1,0 +1,25 @@
+.places {
+	display: inline;
+	position: relative;
+	top: 120px;
+	left: 30px;
+	text-align: left;
+}
+
+.places .h1 {
+	font-size: 30px;
+}
+
+article {
+	display: inline-block;
+	width: 390px;
+	padding: 20px;
+	margin: 20px;
+	border: #FF5A5F solid 1px;
+	border-radius: 4px;
+}
+
+article h2 {
+	font-size: 30px;
+	text-align: center;
+}
